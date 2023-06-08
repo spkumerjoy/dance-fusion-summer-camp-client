@@ -1,0 +1,13 @@
+#menu-item a {
+    color: #0f295a;
+}
+#menu-item a:hover {
+    background-color: transparent;
+    color: #ff5300;
+}
+#menu-item a.active {
+    background-color: transparent;
+    color: #ff5300;
+    text-decoration: underline;
+    border-radius: 0;
+}
