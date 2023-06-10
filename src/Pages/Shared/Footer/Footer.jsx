@@ -11,9 +11,9 @@ import { Link, NavLink } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <footer className="pt-16 pb-6 bg-base-100 border-t">
+        <footer className="pt-16 pb-6 bg-base-100 border-t mt-5 md:mt-24 px-5 md:px-0">
             <div className="footer text-base-content flex flex-col md:flex-row md:justify-between">
-                <div className="w-full md:w-96">
+                <div className="w-full md:w-72 lg:w-96">
                     <Link to="/">
                         <img src="logo.png" alt="Site Logo" className="w-40" />
                     </Link>
@@ -23,7 +23,7 @@ const Footer = () => {
                         styles, energy, and creativity.
                     </p>
                 </div>
-                <div className="w-1/6 pl-11">
+                <div className="w-full md:w-1/4 lg:w-1/6 md:pl-11">
                     <h3 className="text-xl font-bold text-[#0F2A5A]">
                         Quick Access
                     </h3>
@@ -67,7 +67,7 @@ const Footer = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="w-1/4">
+                <div className="w-full md:w-1/4 lg:w-1/4">
                     <h3 className="text-xl font-bold text-[#0F2A5A]">
                         Contact Us
                     </h3>
@@ -75,7 +75,7 @@ const Footer = () => {
                     <div className="flex justify-center items-center my-2">
                         <FaMapMarkerAlt className="text-xl mr-2 text-[#7E1263]" />
                         <span className="text-lg">
-                            High Road, Almdanga (7210),<br></br> Chuadanga
+                            High Road, Almdanga (7210), Chuadanga
                         </span>
                     </div>
                     <div className="flex justify-center items-center mb-2">
@@ -101,7 +101,7 @@ const Footer = () => {
                         </button>
                     </div>
                 </div>
-                <div className="w-1/4">
+                <div className="w-full md:w-1/4 lg:w-1/4">
                     <h3 className="text-xl font-bold text-[#0F2A5A]">
                         Newsletter
                     </h3>

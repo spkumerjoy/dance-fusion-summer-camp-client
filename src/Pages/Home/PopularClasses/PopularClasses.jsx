@@ -9,7 +9,7 @@ const PopularClasses = () => {
         .filter((classItem) => classItem.enrolled_students >= 0)
         .slice(0, 6);
     return (
-        <div>
+        <div className="px-5 md:px-0">
             <SectionTitle
                 subHeading={"Choose your class"}
                 heading={"Popular Classes"}
