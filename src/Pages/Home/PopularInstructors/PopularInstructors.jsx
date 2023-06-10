@@ -9,7 +9,7 @@ const PopularInstructors = () => {
         .filter((user) => user.role === "instructor")
         .slice(0, 6);
     return (
-        <div className="mt-20 px-5 md:px-0">
+        <div className="md:mt-20 px-5 md:px-0">
             <SectionTitle
                 subHeading={"Celebrated Dance Gurus"}
                 heading={"Popular Instructors"}

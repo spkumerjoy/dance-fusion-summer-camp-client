@@ -18,7 +18,7 @@ const PopularClasses = () => {
                 {filteredClasses.map((classItem) => (
                     <div
                         key={classItem._id}
-                        className="card bg-base-100 shadow-xl"
+                        className="card bg-base-100 shadow-xl cursor-pointer"
                     >
                         <figure>
                             <div className="zoom-image">
