@@ -1,17 +1,45 @@
 import React from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useClasses from "../../../Hooks/useClasses";
+import "./PopularClasses.css";
 
 const PopularClasses = () => {
     const [classes] = useClasses();
+    const filteredClasses = classes
+        .filter((classItem) => classItem.enrolled_students >= 0)
+        .slice(0, 6);
     return (
         <div>
             <SectionTitle
-                subHeading={"class"}
+                subHeading={"Choose your class"}
                 heading={"Popular Classes"}
             ></SectionTitle>
-            <div>
-                <h2>{classes.length}</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+                {filteredClasses.map((classItem) => (
+                    <div
+                        key={classItem._id}
+                        className="card bg-base-100 shadow-xl"
+                    >
+                        <figure>
+                            <div className="zoom-image">
+                                <img src={classItem.image} alt="Class" />
+                            </div>
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="card-title mx-auto">
+                                {classItem.name}
+                            </h2>
+                            <div className="card-actions justify-between mt-3">
+                                <p className="text-left text-lg font-semibold">
+                                    Price: ${classItem.price}
+                                </p>
+                                <p className="text-right text-lg font-semibold">
+                                    Available Seats: {classItem.available_seats}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
