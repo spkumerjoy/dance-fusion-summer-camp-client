@@ -108,11 +108,11 @@ const Footer = () => {
                     <div className="bg-[#FF5300] w-10 h-1"></div>
                     <div>
                         <p className="text-lg">
-                            Subsrcibe for our upcoming latest articles and news
+                            Subscribe for our upcoming latest articles and news
                             resources
                         </p>
                         <form className="w-full max-w-sm">
-                            <div className="flex items-center border-b border-b-2 border-[#0F2A5A] py-2">
+                            <div className="flex items-center border-b-2 border-[#0F2A5A] py-2">
                                 <input
                                     className="appearance-none bg-transparent border-none w-full text-[#0F2A5A] mr-3 py-1 px-2 leading-tight focus:outline-none"
                                     type="email"

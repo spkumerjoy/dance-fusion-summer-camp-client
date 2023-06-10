@@ -1,0 +1,49 @@
+.slide-down {
+    animation-name: slideDown;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-up {
+    animation-name: slideUp;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    display: none;
+    margin: 0 auto;
+    width: 90%;
+}
+
+@media (min-width: 768px) {
+    .slide-down {
+        font-size: 36px;
+    }
+    .slide-up {
+        width: 50%;
+        font-size: 18px;
+        display: block;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
