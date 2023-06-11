@@ -11,7 +11,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <footer className="pt-16 pb-6 bg-base-100 border-t mt-5 md:mt-24 px-5 md:px-0">
+        <footer className="pt-16 pb-2 bg-base-100 border-t mt-5 md:mt-24 px-5 md:px-0">
             <div className="footer text-base-content flex flex-col md:flex-row md:justify-between">
                 <div className="w-full md:w-72 lg:w-96">
                     <Link to="/">
