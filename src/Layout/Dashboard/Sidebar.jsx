@@ -86,14 +86,14 @@ const Sidebar = () => {
         </>
     );
     return (
-        <div className="bg-slate-300 text-white w-64 flex flex-col shadow-xl pt-5">
+        <div className="bg-slate-300 w-20 md:w-64 flex flex-col shadow-xl pt-5">
             <div className="navbar flex flex-col h-4/5">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
+                                className="h-10 w-10 -ml-5 -mt-5"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -108,14 +108,14 @@ const Sidebar = () => {
                         </label>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-gray-800 rounded-box w-52"
+                            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-slate-300 rounded-box w-52"
                         >
                             {userItem}
                             <div className="bg-gray-500 h-0.5 w-full"></div>
                             {navItem}
                         </ul>
                     </div>
-                    <Link to="/">
+                    <Link to="/" className="hidden md:block">
                         <img
                             src="https://joyskyz.com/wp-content/uploads/2023/06/logo.png"
                             alt="Logo"

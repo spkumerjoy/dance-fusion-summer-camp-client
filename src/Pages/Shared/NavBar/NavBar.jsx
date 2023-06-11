@@ -75,7 +75,7 @@ const NavBar = () => {
                             Log Out
                         </button>
                     </>
-                    <Link>
+                    <Link to="/login">
                         <button className="btn glass hover:text-[#FF5300]">
                             <FaUserAlt /> Login
                         </button>

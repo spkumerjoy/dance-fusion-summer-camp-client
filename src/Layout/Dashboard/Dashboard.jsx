@@ -4,7 +4,7 @@ import TopBar from "./Topbar";
 
 const Dashboard = () => {
     return (
-        <div className="flex h-screen">
+        <div className="flex h-[83.5px] md:h-screen">
             <Sidebar />
             <div className="flex flex-col flex-1">
                 <TopBar />
