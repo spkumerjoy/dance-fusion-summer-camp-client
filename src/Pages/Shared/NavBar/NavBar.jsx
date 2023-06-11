@@ -47,7 +47,11 @@ const NavBar = () => {
                         </ul>
                     </div>
                     <Link to="/">
-                        <img src="logo.png" alt="Site logo" className="w-36" />
+                        <img
+                            src="https://joyskyz.com/wp-content/uploads/2023/06/logo.png"
+                            alt="Site logo"
+                            className="w-36"
+                        />
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -60,10 +64,12 @@ const NavBar = () => {
                 </div>
                 <div className="navbar-end">
                     <>
-                        <button className="btn glass hover:text-[#FF5300]">
-                            <MdOutlineDashboard className="text-xl" />
-                            Dashboard
-                        </button>
+                        <Link to="/dashboard">
+                            <button className="btn glass hover:text-[#FF5300]">
+                                <MdOutlineDashboard className="text-xl" />
+                                Dashboard
+                            </button>
+                        </Link>
                         <button className="btn text-[#FF5300] hover:text-red-600">
                             <FaSignOutAlt className="text-xl" />
                             Log Out
