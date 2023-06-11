@@ -1,0 +1,10 @@
+.instructors-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    transition: bottom 0.3s ease;
+}
