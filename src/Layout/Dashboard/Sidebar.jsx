@@ -1,4 +1,16 @@
 import React from "react";
+import {
+    FaBook,
+    FaChalkboardTeacher,
+    FaCheckDouble,
+    FaFileInvoiceDollar,
+    FaFileSignature,
+    FaHome,
+    FaTasks,
+    FaUsersCog,
+} from "react-icons/fa";
+import { SiGoogleclassroom } from "react-icons/si";
+import { BsDatabaseFillAdd } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = () => {
@@ -6,17 +18,17 @@ const Sidebar = () => {
         <>
             <li>
                 <NavLink to="/dashboard/my-selected-classes">
-                    My Selected Class
+                    <FaCheckDouble /> My Selected Class
                 </NavLink>
             </li>
             <li>
                 <NavLink to="/dashboard/my-enrolled-classes">
-                    My Enrolled Classes
+                    <FaFileSignature /> My Enrolled Classes
                 </NavLink>
             </li>
             <li>
                 <NavLink to="/dashboard/payment-history">
-                    Payment History
+                    <FaFileInvoiceDollar /> Payment History
                 </NavLink>
             </li>
         </>
@@ -25,10 +37,14 @@ const Sidebar = () => {
     const instructorItem = (
         <>
             <li>
-                <NavLink to="/dashboard/add-a-class">Add A Class</NavLink>
+                <NavLink to="/dashboard/add-a-class">
+                    <BsDatabaseFillAdd /> Add A Class
+                </NavLink>
             </li>
             <li>
-                <NavLink to="/dashboard/my-classes">My Classes</NavLink>
+                <NavLink to="/dashboard/my-classes">
+                    <FaBook /> My Classes
+                </NavLink>
             </li>
         </>
     );
@@ -36,10 +52,14 @@ const Sidebar = () => {
     const adminItem = (
         <>
             <li>
-                <NavLink to="/dashboard/manage-classes">Manage Classes</NavLink>
+                <NavLink to="/dashboard/manage-classes">
+                    <FaTasks /> Manage Classes
+                </NavLink>
             </li>
             <li>
-                <NavLink to="/dashboard/manage-users">Manage Users</NavLink>
+                <NavLink to="/dashboard/manage-users">
+                    <FaUsersCog /> Manage Users
+                </NavLink>
             </li>
         </>
     );
@@ -49,13 +69,19 @@ const Sidebar = () => {
     const navItem = (
         <>
             <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/">
+                    <FaHome /> Home
+                </NavLink>
             </li>
             <li>
-                <NavLink to="/instructors">Instructors</NavLink>
+                <NavLink to="/instructors">
+                    <FaChalkboardTeacher /> Instructors
+                </NavLink>
             </li>
             <li>
-                <NavLink to="/classes">Classes</NavLink>
+                <NavLink to="/classes">
+                    <SiGoogleclassroom /> Classes
+                </NavLink>
             </li>
         </>
     );
