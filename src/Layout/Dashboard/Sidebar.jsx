@@ -5,13 +5,19 @@ const Sidebar = () => {
     const studentItem = (
         <>
             <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/dashboard/my-selected-classes">
+                    My Selected Class
+                </NavLink>
             </li>
             <li>
-                <NavLink to="/instructors">Instructors</NavLink>
+                <NavLink to="/dashboard/my-enrolled-classes">
+                    My Enrolled Classes
+                </NavLink>
             </li>
             <li>
-                <NavLink to="/classes">Classes</NavLink>
+                <NavLink to="/dashboard/payment-history">
+                    Payment History
+                </NavLink>
             </li>
         </>
     );
@@ -19,13 +25,10 @@ const Sidebar = () => {
     const instructorItem = (
         <>
             <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/dashboard/add-a-class">Add A Class</NavLink>
             </li>
             <li>
-                <NavLink to="/instructors">Instructors</NavLink>
-            </li>
-            <li>
-                <NavLink to="/classes">Classes</NavLink>
+                <NavLink to="/dashboard/my-classes">My Classes</NavLink>
             </li>
         </>
     );
@@ -33,16 +36,15 @@ const Sidebar = () => {
     const adminItem = (
         <>
             <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/dashboard/manage-classes">Manage Classes</NavLink>
             </li>
             <li>
-                <NavLink to="/instructors">Instructors</NavLink>
-            </li>
-            <li>
-                <NavLink to="/classes">Classes</NavLink>
+                <NavLink to="/dashboard/manage-users">Manage Users</NavLink>
             </li>
         </>
     );
+
+    const userItem = [studentItem, instructorItem, adminItem];
 
     const navItem = (
         <>
@@ -59,7 +61,7 @@ const Sidebar = () => {
     );
     return (
         <div className="bg-slate-300 text-white w-64 flex flex-col shadow-xl pt-5">
-            <div className="navbar flex flex-col h-3/5">
+            <div className="navbar flex flex-col h-4/5">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -82,23 +84,9 @@ const Sidebar = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-gray-800 rounded-box w-52"
                         >
-                            <li>
-                                <a>Item 1</a>
-                            </li>
-                            <li>
-                                <a>Parent</a>
-                                <ul className="p-2">
-                                    <li>
-                                        <a>Submenu 1</a>
-                                    </li>
-                                    <li>
-                                        <a>Submenu 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a>Item 3</a>
-                            </li>
+                            {userItem}
+                            <div className="bg-gray-500 h-0.5 w-full"></div>
+                            {navItem}
                         </ul>
                     </div>
                     <Link to="/">
@@ -109,26 +97,10 @@ const Sidebar = () => {
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex flex-grow">
-                    <ul className="menu menu-horizontal px-1 flex flex-col">
-                        <li>
-                            <a>Item 1</a>
-                        </li>
-                        <li tabIndex={0}>
-                            <details>
-                                <summary>Parent</summary>
-                                <ul className="p-2">
-                                    <li>
-                                        <a>Submenu 1</a>
-                                    </li>
-                                    <li>
-                                        <a>Submenu 2</a>
-                                    </li>
-                                </ul>
-                            </details>
-                        </li>
-                        <li>
-                            <a>Item 3</a>
-                        </li>
+                    <ul className="menu menu-horizontal px-1 flex flex-col text-lg text-[#0f295a]">
+                        {userItem}
+                        <div className="bg-gray-500 h-0.5 w-full my-5"></div>
+                        {navItem}
                     </ul>
                 </div>
             </div>

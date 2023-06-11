@@ -6,33 +6,63 @@ import Classes from "../Pages/Classes/Classes";
 import NotFound from "../Pages/NotFound/NotFound";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import MySelectedClasses from "../Pages/Dashboard/Student/MySelectedClasses/MySelectedClasses";
+import ManageClasses from "../Pages/Dashboard/Admin/ManageClasses/ManageClasses";
+import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
+import AddAClass from "../Pages/Dashboard/Instructor/AddAClass/AddAClass";
+import MyClasses from "../Pages/Dashboard/Instructor/MyClasses/MyClasses";
+import MyEnrolledClasses from "../Pages/Dashboard/Student/MyEnrolledClasses/MyEnrolledClasses";
+import PaymentHistory from "../Pages/Dashboard/Student/PaymentHistory/PaymentHistory";
 
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <Main></Main>,
+        element: <Main />,
         children: [
             {
                 path: "/",
-                element: <Home></Home>,
+                element: <Home />,
             },
             {
                 path: "/instructors",
-                element: <Instructors></Instructors>,
+                element: <Instructors />,
             },
             {
                 path: "/classes",
-                element: <Classes></Classes>,
+                element: <Classes />,
             },
         ],
     },
     {
         path: "dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <Dashboard />,
         children: [
             {
-                path: "selected-classes",
-                element: <MySelectedClasses></MySelectedClasses>,
+                path: "manage-classes",
+                element: <ManageClasses />,
+            },
+            {
+                path: "manage-users",
+                element: <ManageUsers />,
+            },
+            {
+                path: "add-a-class",
+                element: <AddAClass />,
+            },
+            {
+                path: "my-classes",
+                element: <MyClasses />,
+            },
+            {
+                path: "my-selected-classes",
+                element: <MySelectedClasses />,
+            },
+            {
+                path: "my-enrolled-classes",
+                element: <MyEnrolledClasses />,
+            },
+            {
+                path: "payment-history",
+                element: <PaymentHistory />,
             },
         ],
     },
