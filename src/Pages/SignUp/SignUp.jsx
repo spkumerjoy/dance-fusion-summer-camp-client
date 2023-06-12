@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -48,7 +49,6 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        console.log(data);
         if (data.password !== data.confirmPassword) {
             setPasswordError(true);
         } else {
@@ -56,7 +56,6 @@ const SignUp = () => {
             createUser(data.email, data.password)
                 .then((result) => {
                     const loggedUser = result.user;
-                    console.log(loggedUser);
                     updateUserProfile(data.name, data.photoURL).then(() => {
                         const saveUser = {
                             displayName: data.name,
@@ -301,9 +300,7 @@ const SignUp = () => {
                     <div className="absolute px-5 bg-white">Or</div>
                 </div>
                 <div className="flex mt-8 gap-x-2">
-                    <button className="btn btn-circle btn-active btn-ghost  btn-xs sm:btn-sm md:btn-md  mx-auto">
-                        <FcGoogle className="text-3xl hover:text-4xl ease-in-out" />
-                    </button>
+                    <SocialLogin />
                 </div>
 
                 <p className="mt-3 text-lg font-light text-center text-gray-700">

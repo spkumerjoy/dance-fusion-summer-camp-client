@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -14,7 +15,7 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || "/";
 
-    const { logIn } = useContext(AuthContext);
+    const { logIn, googleSignIn } = useContext(AuthContext);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -129,9 +130,7 @@ const Login = () => {
                     <div className="absolute px-5 bg-white">Or</div>
                 </div>
                 <div className="flex mt-8 gap-x-2">
-                    <button className="btn btn-circle btn-active btn-ghost btn-xs sm:btn-sm md:btn-md mx-auto">
-                        <FcGoogle className="text-3xl hover:text-4xl ease-in-out" />
-                    </button>
+                    <SocialLogin />
                 </div>
 
                 <p className="mt-3 text-lg font-light text-center text-gray-700">
