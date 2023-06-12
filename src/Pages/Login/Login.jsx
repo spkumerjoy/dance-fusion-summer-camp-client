@@ -1,13 +1,27 @@
+import { useContext } from "react";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
 
+    const { logIn } = useContext(AuthContext);
+
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
+    };
+
+    const handleLogin = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        logIn(email, password).then((result) => {
+            const user = result.user;
+        });
     };
 
     return (
@@ -21,7 +35,7 @@ const Login = () => {
                     />
                     Log in to Your Account
                 </h1>
-                <form className="mt-6">
+                <form onSubmit={handleLogin} className="mt-6">
                     <div className="mb-2">
                         <label className="block text-sm font-semibold text-gray-800">
                             Email
@@ -29,6 +43,7 @@ const Login = () => {
                         <input
                             required
                             type="email"
+                            name="email"
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         />
                     </div>
@@ -39,6 +54,7 @@ const Login = () => {
                         <div className="relative">
                             <input
                                 required
+                                name="password"
                                 type={showPassword ? "text" : "password"}
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             />
@@ -62,9 +78,11 @@ const Login = () => {
                         Forget Password?
                     </a>
                     <div className="mt-6">
-                        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-                            Login
-                        </button>
+                        <input
+                            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
+                            type="submit"
+                            value="Login"
+                        />
                     </div>
                 </form>
                 <div className="relative flex items-center justify-center w-full mt-6 border border-t">
