@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -78,12 +79,12 @@ const Login = () => {
                 <p className="mt-3 text-lg font-light text-center text-gray-700">
                     {" "}
                     Don't have an account?{" "}
-                    <a
-                        href="#"
+                    <Link
+                        to="/sign-up"
                         className="font-medium text-purple-600 hover:underline"
                     >
                         Sign up
-                    </a>
+                    </Link>
                 </p>
             </div>
         </div>

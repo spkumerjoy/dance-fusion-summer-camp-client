@@ -13,6 +13,7 @@ import MyClasses from "../Pages/Dashboard/Instructor/MyClasses/MyClasses";
 import MyEnrolledClasses from "../Pages/Dashboard/Student/MyEnrolledClasses/MyEnrolledClasses";
 import PaymentHistory from "../Pages/Dashboard/Student/PaymentHistory/PaymentHistory";
 import Login from "../Pages/Login/Login";
+import SignUp from "../Pages/SignUp/SignUp";
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
     {
         path: "login",
         element: <Login />,
+    },
+    {
+        path: "sign-up",
+        element: <SignUp />,
     },
     {
         path: "dashboard",
