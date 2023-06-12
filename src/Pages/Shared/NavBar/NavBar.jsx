@@ -2,8 +2,34 @@ import { Link, NavLink } from "react-router-dom";
 import { FaSignOutAlt, FaUserAlt } from "react-icons/fa";
 import { MdOutlineDashboard } from "react-icons/md";
 import "./NavBar.css";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const [displayName, setDisplayName] = useState(null);
+
+    const handleLogOut = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to logout now!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Log out!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire("Log out!", "Logout successful.", "success");
+                logOut()
+                    .then((result) => {})
+                    .catch((error) => console.error(error));
+            }
+        });
+    };
+
     const navItem = (
         <>
             <li>
@@ -63,23 +89,44 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <>
-                        <Link to="/dashboard">
+                    {user ? (
+                        <>
+                            <Link to="/dashboard">
+                                <button className="btn glass hover:text-[#FF5300]">
+                                    <MdOutlineDashboard className="text-xl" />
+                                    Dashboard
+                                </button>
+                            </Link>
+                            <div className="mr-5 md:mr-7 text-center flex justify-center">
+                                <img
+                                    className="w-11 rounded-full "
+                                    src={user.photoURL}
+                                    onMouseOver={() =>
+                                        setDisplayName(user.displayName)
+                                    }
+                                    onMouseOut={() => setDisplayName(null)}
+                                />
+                                {displayName && (
+                                    <h2 className="transition duration-150 text-lg font-bold absolute mt-11">
+                                        {displayName}
+                                    </h2>
+                                )}
+                            </div>
+                            <button
+                                onClick={handleLogOut}
+                                className="btn text-[#FF5300] hover:text-red-600"
+                            >
+                                <FaSignOutAlt className="text-xl" />
+                                Log Out
+                            </button>
+                        </>
+                    ) : (
+                        <Link to="/login">
                             <button className="btn glass hover:text-[#FF5300]">
-                                <MdOutlineDashboard className="text-xl" />
-                                Dashboard
+                                <FaUserAlt /> Login
                             </button>
                         </Link>
-                        <button className="btn text-[#FF5300] hover:text-red-600">
-                            <FaSignOutAlt className="text-xl" />
-                            Log Out
-                        </button>
-                    </>
-                    <Link to="/login">
-                        <button className="btn glass hover:text-[#FF5300]">
-                            <FaUserAlt /> Login
-                        </button>
-                    </Link>
+                    )}
                 </div>
             </div>
         </div>

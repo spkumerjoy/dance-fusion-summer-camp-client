@@ -2,11 +2,17 @@ import { useContext } from "react";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
 
     const { logIn } = useContext(AuthContext);
 
@@ -14,14 +20,37 @@ const Login = () => {
         setShowPassword(!showPassword);
     };
 
-    const handleLogin = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        logIn(email, password).then((result) => {
-            const user = result.user;
-        });
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+
+    const handleLogin = (data) => {
+        const { email, password } = data;
+        logIn(email, password)
+            .then((result) => {
+                const user = result.user;
+                Swal.fire({
+                    title: "User Login Successful",
+                    showClass: {
+                        popup: "animate__animated animate__fadeInDown",
+                    },
+                    hideClass: {
+                        popup: "animate__animated animate__fadeOutUp",
+                    },
+                });
+                navigate(from, { replace: true });
+            })
+            .catch((error) => {
+                Swal.fire({
+                    title: "User Login Failed",
+                    text: error.message,
+                    icon: "error",
+                    showCancelButton: false,
+                    confirmButtonText: "OK",
+                });
+            });
     };
 
     return (
@@ -35,17 +64,22 @@ const Login = () => {
                     />
                     Log in to Your Account
                 </h1>
-                <form onSubmit={handleLogin} className="mt-6">
+                <form onSubmit={handleSubmit(handleLogin)} className="mt-6">
                     <div className="mb-2">
                         <label className="block text-sm font-semibold text-gray-800">
                             Email
                         </label>
                         <input
-                            required
                             type="email"
-                            name="email"
+                            placeholder="Enter your email"
+                            {...register("email", { required: true })}
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         />
+                        {errors.email && (
+                            <span className="text-red-600">
+                                Email is required
+                            </span>
+                        )}
                     </div>
                     <div className="mb-2">
                         <label className="block text-sm font-semibold text-gray-800">
@@ -53,9 +87,14 @@ const Login = () => {
                         </label>
                         <div className="relative">
                             <input
-                                required
-                                name="password"
+                                placeholder="Enter your password"
                                 type={showPassword ? "text" : "password"}
+                                {...register("password", {
+                                    required: true,
+                                    minLength: 6,
+                                    pattern:
+                                        /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                                })}
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             />
                             <button
@@ -70,13 +109,19 @@ const Login = () => {
                                 )}
                             </button>
                         </div>
+                        {errors.password && (
+                            <p className="mt-1 text-xs text-red-500">
+                                Password is required and must contain at least 6
+                                characters, one uppercase letter, one lowercase
+                                letter, one number, and one special character.
+                            </p>
+                        )}
                     </div>
-                    <a
-                        href="#"
-                        className="text-xs text-purple-600 hover:underline"
-                    >
-                        Forget Password?
-                    </a>
+                    {errors.email || errors.password ? (
+                        <p className="text-red-600 mt-2">
+                            Email and password do not match our records.
+                        </p>
+                    ) : null}
                     <div className="mt-6">
                         <input
                             className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
@@ -89,13 +134,12 @@ const Login = () => {
                     <div className="absolute px-5 bg-white">Or</div>
                 </div>
                 <div className="flex mt-8 gap-x-2">
-                    <button className="btn btn-circle btn-active btn-ghost  btn-xs sm:btn-sm md:btn-md  mx-auto">
+                    <button className="btn btn-circle btn-active btn-ghost btn-xs sm:btn-sm md:btn-md mx-auto">
                         <FcGoogle className="text-3xl hover:text-4xl ease-in-out" />
                     </button>
                 </div>
 
                 <p className="mt-3 text-lg font-light text-center text-gray-700">
-                    {" "}
                     Don't have an account?{" "}
                     <Link
                         to="/sign-up"
