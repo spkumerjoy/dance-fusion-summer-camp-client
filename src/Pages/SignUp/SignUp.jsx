@@ -3,31 +3,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext);
-
-    const {
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-    } = useForm();
-
-    const onSubmit = (data) => {
-        console.log(data);
-        if (data.password !== data.confirmPassword) {
-            setPasswordError(true);
-        } else {
-            setPasswordError(false);
-            createUser(data.email, data.password).then((result) => {
-                const loggedUser = result.user;
-                console.log(loggedUser);
-            });
-        }
-    };
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -57,6 +38,67 @@ const SignUp = () => {
     const handleGenderChange = (e) => {
         setGender(e.target.value);
     };
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm();
+    const navigate = useNavigate();
+
+    const onSubmit = (data) => {
+        console.log(data);
+        if (data.password !== data.confirmPassword) {
+            setPasswordError(true);
+        } else {
+            setPasswordError(false);
+            createUser(data.email, data.password)
+                .then((result) => {
+                    const loggedUser = result.user;
+                    console.log(loggedUser);
+                    updateUserProfile(data.name, data.photoURL).then(() => {
+                        const saveUser = {
+                            displayName: data.name,
+                            photoURL: data.photoURL,
+                            email: data.email,
+                            role: "student",
+                        };
+                        fetch("http://localhost:5000/users", {
+                            method: "POST",
+                            headers: {
+                                "content-type": "application/json",
+                            },
+                            body: JSON.stringify(saveUser),
+                        })
+                            .then((res) => res.json())
+                            .then((data) => {
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: "center",
+                                        icon: "success",
+                                        title: "User Sign Up Successfully.",
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                    });
+                                    navigate("/");
+                                }
+                            });
+                    });
+                })
+                .catch((error) => {
+                    Swal.fire({
+                        title: "Sign Up Failed",
+                        text: error.message,
+                        icon: "error",
+                        showCancelButton: false,
+                        confirmButtonText: "OK",
+                    });
+                });
+        }
+    };
+
     return (
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
             <div className="w-full px-10 py-8 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
@@ -112,6 +154,7 @@ const SignUp = () => {
                             <div className="relative">
                                 <input
                                     type={showPassword ? "text" : "password"}
+                                    placeholder="Enter your password"
                                     {...register("password", {
                                         required: true,
                                         minLength: 6,
@@ -154,6 +197,7 @@ const SignUp = () => {
                                             ? "text"
                                             : "password"
                                     }
+                                    placeholder="Enter confirm password"
                                     {...register("confirmPassword", {
                                         required: true,
                                     })}
@@ -196,10 +240,15 @@ const SignUp = () => {
                         </label>
                         <input
                             type="text"
-                            {...register("photoURL")}
+                            placeholder="Put your photoURL here"
+                            {...register("photoURL", { required: true })}
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                            required
                         />
+                        {errors.photoURL && (
+                            <p className="mt-1 text-xs text-red-500">
+                                Photo URL is required
+                            </p>
+                        )}
                     </div>
                     <div className="mt-2">
                         <label className="block text-sm font-semibold text-gray-800">
@@ -225,6 +274,7 @@ const SignUp = () => {
                             </label>
                             <input
                                 type="text"
+                                placeholder="(Optional)"
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             />
                         </div>
@@ -234,6 +284,7 @@ const SignUp = () => {
                             </label>
                             <input
                                 type="text"
+                                placeholder="(Optional)"
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             />
                         </div>

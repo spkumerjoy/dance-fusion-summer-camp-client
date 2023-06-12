@@ -97,7 +97,7 @@ const NavBar = () => {
                                     Dashboard
                                 </button>
                             </Link>
-                            <div className="mr-5 md:mr-7 text-center flex justify-center">
+                            <div className="mx-5 md:mr-7 text-center flex justify-center">
                                 <img
                                     className="w-11 rounded-full "
                                     src={user.photoURL}
