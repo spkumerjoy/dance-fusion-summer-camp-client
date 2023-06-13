@@ -14,6 +14,7 @@ import { BsDatabaseFillAdd } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useUsers from "../../Hooks/useUsers";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Sidebar = () => {
     const { user } = useAuth();
@@ -71,6 +72,8 @@ const Sidebar = () => {
             </li>
         </>
     );
+
+    const [isAdmin] = useAdmin();
 
     let userItem = [];
 

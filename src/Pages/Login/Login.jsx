@@ -58,13 +58,6 @@ const Login = () => {
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
             <div className="w-full px-10 py-8 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
                 <h1 className="text-3xl my-5 font-medium text-center text-[#0F295A] uppercase">
-                    <Link to="/">
-                        <img
-                            src="https://joyskyz.com/wp-content/uploads/2023/06/logo.png"
-                            alt="Logo"
-                            className="w-2/6 mx-auto mb-3"
-                        />
-                    </Link>
                     Log in to Your Account
                 </h1>
                 <form onSubmit={handleSubmit(handleLogin)} className="mt-6">
