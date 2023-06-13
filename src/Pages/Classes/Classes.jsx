@@ -5,10 +5,11 @@ import useUsers from "../../Hooks/useUsers";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const Classes = () => {
     const [classes] = useClasses();
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     const [users] = useUsers();
     const [selectedClasses, setSelectedClasses] = useState([]);
     const navigate = useNavigate();
@@ -23,10 +24,6 @@ const Classes = () => {
             setSelectedClasses(JSON.parse(storedClasses));
         }
     }, [user]);
-
-    // useEffect(() => {
-    //     localStorage.setItem(user?.email, JSON.stringify(selectedClasses));
-    // }, [user, selectedClasses]);
 
     const getClassCardStyle = (classItem) => {
         if (classItem.available_seats === 0) {

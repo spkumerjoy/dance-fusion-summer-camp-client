@@ -12,8 +12,16 @@ import {
 import { SiGoogleclassroom } from "react-icons/si";
 import { BsDatabaseFillAdd } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import useUsers from "../../Hooks/useUsers";
 
 const Sidebar = () => {
+    const { user } = useAuth();
+    const [users] = useUsers();
+    const student = users.find(
+        (loggedUser) => loggedUser.email === user?.email
+    );
+
     const studentItem = (
         <>
             <li>
@@ -86,7 +94,7 @@ const Sidebar = () => {
         </>
     );
     return (
-        <div className="bg-slate-300 w-20 md:w-64 flex flex-col shadow-xl pt-5">
+        <div className="bg-slate-300 w-20 md:w-64 flex flex-col shadow-xl pt-5 h-screen">
             <div className="navbar flex flex-col h-4/5">
                 <div className="navbar-start">
                     <div className="dropdown">
