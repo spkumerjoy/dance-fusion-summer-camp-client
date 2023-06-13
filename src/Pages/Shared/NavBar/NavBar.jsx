@@ -6,10 +6,16 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
+import useUsers from "../../../Hooks/useUsers";
 
 const NavBar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useAuth();
+    const [users] = useUsers();
     const [displayName, setDisplayName] = useState(null);
+
+    const activeUser = users.find((allUser) => allUser.email === user?.email);
+    console.log(activeUser);
 
     const handleLogOut = () => {
         Swal.fire({
@@ -91,7 +97,15 @@ const NavBar = () => {
                 <div className="navbar-end">
                     {user ? (
                         <>
-                            <Link to="/dashboard">
+                            <Link
+                                to={
+                                    activeUser.role === "admin"
+                                        ? "/dashboard/manage-classes"
+                                        : activeUser.role === "student"
+                                        ? "/dashboard/my-selected-classes"
+                                        : "/dashboard/add-a-class"
+                                }
+                            >
                                 <button className="btn glass btn-xs sm:btn-sm md:btn-md hover:text-[#FF5300]">
                                     <MdOutlineDashboard className="text-xl" />
                                     Dashboard
