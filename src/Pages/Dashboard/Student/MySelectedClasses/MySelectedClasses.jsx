@@ -70,9 +70,9 @@ const MySelectedClasses = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className="text-lg text-[#0F2A5A] border-b-2 border-blue-900">
+                        <tr className="text-lg text-center text-[#0F2A5A] border-b-2 border-blue-900">
                             <th>#</th>
-                            <th>Class Name</th>
+                            <th className="text-left pl-14">Class Name</th>
                             <th>Instructor</th>
                             <th>Available Seats</th>
                             <th>Price</th>
@@ -82,7 +82,10 @@ const MySelectedClasses = () => {
                     </thead>
                     <tbody>
                         {mySelectedClasses.map((classes, index) => (
-                            <tr key={classes._id} className="font-bold">
+                            <tr
+                                key={classes._id}
+                                className="font-bold text-center"
+                            >
                                 <td>{index + 1}</td>
                                 <td>
                                     <div className="flex items-center space-x-3">
