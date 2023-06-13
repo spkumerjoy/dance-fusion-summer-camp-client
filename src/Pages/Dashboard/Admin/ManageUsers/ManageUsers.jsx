@@ -29,6 +29,25 @@ const ManageUsers = () => {
             });
     };
 
+    const handleMakeInstructor = (user) => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: "PATCH",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: `${user.name} is an Instructor Now!`,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            });
+    };
+
     return (
         <div className="px-5 mb-5">
             <SectionTitle
@@ -75,9 +94,18 @@ const ManageUsers = () => {
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
                                 <td>
-                                    <button className="btn btn-outline btn-primary btn-sm">
-                                        Make Instructor
-                                    </button>
+                                    {user.role === "instructor" ? (
+                                        "instructor"
+                                    ) : (
+                                        <button
+                                            onClick={() =>
+                                                handleMakeInstructor(user)
+                                            }
+                                            className="btn btn-outline btn-primary btn-sm"
+                                        >
+                                            Make Instructor
+                                        </button>
+                                    )}
                                 </td>
                                 <td>
                                     {user.role === "admin" ? (
