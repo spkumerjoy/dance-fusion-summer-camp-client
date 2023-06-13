@@ -76,7 +76,7 @@ const NavBar = () => {
                         <img
                             src="https://joyskyz.com/wp-content/uploads/2023/06/logo.png"
                             alt="Site logo"
-                            className="w-36"
+                            className="w-20 md:w-36"
                         />
                     </Link>
                 </div>
@@ -92,14 +92,14 @@ const NavBar = () => {
                     {user ? (
                         <>
                             <Link to="/dashboard">
-                                <button className="btn glass hover:text-[#FF5300]">
+                                <button className="btn glass btn-xs sm:btn-sm md:btn-md hover:text-[#FF5300]">
                                     <MdOutlineDashboard className="text-xl" />
                                     Dashboard
                                 </button>
                             </Link>
-                            <div className="mx-5 md:mr-7 text-center flex justify-center">
+                            <div className="mx-5 md:mr-7 text-center sm:flex justify-center hidden">
                                 <img
-                                    className="w-11 rounded-full "
+                                    className="w-11 rounded-full"
                                     src={user.photoURL}
                                     onMouseOver={() =>
                                         setDisplayName(user.displayName)
@@ -114,7 +114,7 @@ const NavBar = () => {
                             </div>
                             <button
                                 onClick={handleLogOut}
-                                className="btn text-[#FF5300] hover:text-red-600"
+                                className="btn btn-xs sm:btn-sm md:btn-md text-[#FF5300] hover:text-red-600"
                             >
                                 <FaSignOutAlt className="text-xl" />
                                 Log Out

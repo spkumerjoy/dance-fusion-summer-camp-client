@@ -72,7 +72,23 @@ const Sidebar = () => {
         </>
     );
 
-    const userItem = [studentItem, instructorItem, adminItem];
+    let userItem = [];
+
+    if (student && student.role === "student") {
+        userItem = [
+            <React.Fragment key="studentItem">{studentItem}</React.Fragment>,
+        ];
+    } else if (student && student.role === "admin") {
+        userItem = [
+            <React.Fragment key="adminItem">{adminItem}</React.Fragment>,
+        ];
+    } else if (student && student.role === "instructor") {
+        userItem = [
+            <React.Fragment key="instructorItem">
+                {instructorItem}
+            </React.Fragment>,
+        ];
+    }
 
     const navItem = (
         <>
