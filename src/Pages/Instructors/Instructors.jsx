@@ -1,10 +1,10 @@
 import React from "react";
-import useInstructors from "../../Hooks/useInstructors";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import "./Instructors.css";
+import useUsers from "../../Hooks/useUsers";
 
 const Instructors = () => {
-    const [users] = useInstructors();
+    const [users] = useUsers();
     const instructors = users.filter((user) => user.role === "instructor");
     return (
         <div className="px-5 md:px-0">

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-const useInstructors = () => {
+const useUsers = () => {
     const {
         data: users = [],
         isLoading: loading,
@@ -15,4 +15,4 @@ const useInstructors = () => {
     return [users, loading, refetch];
 };
 
-export default useInstructors;
+export default useUsers;

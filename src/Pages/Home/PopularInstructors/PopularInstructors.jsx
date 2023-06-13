@@ -1,10 +1,10 @@
 import React from "react";
-import useInstructors from "../../../Hooks/useInstructors";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import "./PopularInstructors.css";
+import useUsers from "../../../Hooks/useUsers";
 
 const PopularInstructors = () => {
-    const [users] = useInstructors();
+    const [users] = useUsers();
     const instructors = users
         .filter((user) => user.role === "instructor")
         .slice(0, 6);
