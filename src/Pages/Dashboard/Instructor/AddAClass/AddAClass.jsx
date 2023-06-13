@@ -33,8 +33,6 @@ const AddAClass = () => {
                         instructor_email,
                         available_seats,
                         price,
-                        category,
-                        recipe,
                     } = data;
                     const newItem = {
                         image: imgURL,
@@ -64,7 +62,7 @@ const AddAClass = () => {
             });
     };
     return (
-        <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
+        <div className="relative flex flex-col justify-center overflow-hidden">
             <div className="w-full px-10 py-8 m-auto bg-white rounded-md shadow-xl lg:max-w-2xl">
                 <h1 className="text-3xl my-5 font-medium text-center text-[#0F295A] uppercase">
                     Add Your Class
@@ -152,7 +150,7 @@ const AddAClass = () => {
                     </div>
                     <div className="mt-6">
                         <input
-                            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
+                            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600 cursor-pointer"
                             type="submit"
                             value="Add Class"
                         />

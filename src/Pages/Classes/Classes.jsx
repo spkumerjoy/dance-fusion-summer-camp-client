@@ -14,6 +14,10 @@ const Classes = () => {
     const [selectedClasses, setSelectedClasses] = useState([]);
     const navigate = useNavigate();
 
+    const approvedClasses = classes.filter(
+        (allClasses) => allClasses.status === "approved"
+    );
+
     const student = users.find(
         (loggedUser) => loggedUser.email === user?.email
     );
@@ -92,7 +96,7 @@ const Classes = () => {
                 heading={"Our All Classes"}
             ></SectionTitle>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-                {classes.map((classItem) => (
+                {approvedClasses.map((classItem) => (
                     <div
                         key={classItem._id}
                         className={getClassCardStyle(classItem)}

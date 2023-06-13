@@ -15,6 +15,7 @@ import PaymentHistory from "../Pages/Dashboard/Student/PaymentHistory/PaymentHis
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import UpdateClass from "../Pages/Dashboard/Instructor/MyClasses/UpdateClass";
 
 export const router = createBrowserRouter([
     {
@@ -62,6 +63,17 @@ export const router = createBrowserRouter([
             {
                 path: "add-a-class",
                 element: <AddAClass />,
+            },
+            {
+                path: "update-class/:id",
+                element: (
+                    <PrivateRoute>
+                        <UpdateClass />
+                    </PrivateRoute>
+                ),
+
+                loader: ({ params }) =>
+                    fetch(`http://localhost:5000/classes/${params.id}`),
             },
             {
                 path: "my-classes",
