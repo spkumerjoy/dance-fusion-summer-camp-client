@@ -2,6 +2,7 @@ import React from "react";
 import useClasses from "../../../../Hooks/useClasses";
 import SectionTitle from "../../../../Components/SectionTitle/SectionTitle";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageClasses = () => {
     const [classes, refetch] = useClasses();
@@ -131,9 +132,13 @@ const ManageClasses = () => {
                                     )}
                                 </td>
                                 <td>
-                                    <button className="btn btn-outline btn-secondary btn-sm">
-                                        send feedback
-                                    </button>
+                                    <Link
+                                        to={`/dashboard/send-feedback/${classes._id}`}
+                                    >
+                                        <button className="btn btn-outline btn-secondary btn-sm">
+                                            send feedback
+                                        </button>
+                                    </Link>
                                 </td>
                             </tr>
                         ))}

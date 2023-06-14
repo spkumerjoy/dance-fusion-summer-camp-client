@@ -28,7 +28,8 @@ const MyClasses = () => {
                             <th>Available Seats</th>
                             <th>Price</th>
                             <th>Total Enrolled</th>
-                            <th>Status/Feedback</th>
+                            <th>Status</th>
+                            <th>Feedback</th>
                             <th>Update</th>
                         </tr>
                     </thead>
@@ -60,6 +61,11 @@ const MyClasses = () => {
                                 <td>${classes.price}</td>
                                 <td>{classes.enrolled_students}</td>
                                 <td>{classes.status}</td>
+                                <td>
+                                    {classes.status !== "approved" &&
+                                        classes.status !== "pending" &&
+                                        classes.feedback}
+                                </td>
                                 <td>
                                     <Link
                                         to={`/dashboard/update-class/${classes._id}`}

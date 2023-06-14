@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 const UpdateClass = () => {
     const classData = useLoaderData();
     const { _id, image, name, available_seats, price } = classData;
-    console.log(classData);
+
     const handleUpdate = (event) => {
         event.preventDefault();
         const form = event.target;
