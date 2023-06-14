@@ -1,5 +1,6 @@
 import { Carousel } from "react-carousel-minimal";
 import "./Slider.css";
+import { JackInTheBox } from "react-awesome-reveal";
 
 const Slider = () => {
     const data = [
@@ -36,32 +37,34 @@ const Slider = () => {
     };
     return (
         <div className="App">
-            <div style={{ textAlign: "center" }}>
-                <div>
-                    <Carousel
-                        data={data}
-                        time={2000}
-                        width="100%"
-                        height="100%"
-                        captionStyle={captionStyle}
-                        radius="0"
-                        slideNumber={true}
-                        slideNumberStyle={slideNumberStyle}
-                        captionPosition="center"
-                        automatic={true}
-                        dots={true}
-                        pauseIconColor="white"
-                        pauseIconSize="40px"
-                        slideBackgroundColor="darkgrey"
-                        slideImageFit="cover"
-                        thumbnails={false}
-                        style={{
-                            textAlign: "center",
-                            maxWidth: "100%",
-                        }}
-                    />
+            <JackInTheBox>
+                <div style={{ textAlign: "center" }}>
+                    <div>
+                        <Carousel
+                            data={data}
+                            time={2000}
+                            width="100%"
+                            height="100%"
+                            captionStyle={captionStyle}
+                            radius="0"
+                            slideNumber={true}
+                            slideNumberStyle={slideNumberStyle}
+                            captionPosition="center"
+                            automatic={true}
+                            dots={true}
+                            pauseIconColor="white"
+                            pauseIconSize="40px"
+                            slideBackgroundColor="darkgrey"
+                            slideImageFit="cover"
+                            thumbnails={false}
+                            style={{
+                                textAlign: "center",
+                                maxWidth: "100%",
+                            }}
+                        />
+                    </div>
                 </div>
-            </div>
+            </JackInTheBox>
         </div>
     );
 };

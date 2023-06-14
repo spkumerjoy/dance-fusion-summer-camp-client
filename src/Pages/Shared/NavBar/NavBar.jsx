@@ -1,15 +1,31 @@
 import { Link, NavLink } from "react-router-dom";
-import { FaSignOutAlt, FaUserAlt } from "react-icons/fa";
+import { FaMoon, FaSignOutAlt, FaSun, FaUserAlt } from "react-icons/fa";
 import { MdOutlineDashboard } from "react-icons/md";
 import "./NavBar.css";
-import { useContext } from "react";
-import { AuthContext } from "../../../Providers/AuthProvider";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hooks/useAuth";
 import useUsers from "../../../Hooks/useUsers";
+import { useEffect } from "react";
 
 const NavBar = () => {
+    const [theme, setTheme] = useState(
+        localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+    );
+
+    const handleToggle = (e) => {
+        if (e.target.checked) {
+            setTheme("dark");
+        } else {
+            setTheme("light");
+        }
+    };
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+        const localTheme = localStorage.getItem("theme");
+        document.querySelector("html").setAttribute("data-theme", localTheme);
+    }, [theme]);
+
     const { user, logOut } = useAuth();
     const [users] = useUsers();
     const [displayName, setDisplayName] = useState(null);
@@ -99,9 +115,9 @@ const NavBar = () => {
                         <>
                             <Link
                                 to={
-                                    activeUser.role === "admin"
+                                    activeUser?.role === "admin"
                                         ? "/dashboard/manage-classes"
-                                        : activeUser.role === "student"
+                                        : activeUser?.role === "student"
                                         ? "/dashboard/my-selected-classes"
                                         : "/dashboard/add-a-class"
                                 }
@@ -141,6 +157,20 @@ const NavBar = () => {
                             </button>
                         </Link>
                     )}
+                    <button className="btn btn-square btn-ghost">
+                        <label className="swap swap-rotate w-12 h-12">
+                            <input
+                                type="checkbox"
+                                onChange={handleToggle}
+                                // show toggle image based on localstorage theme
+                                checked={theme === "light" ? false : true}
+                            />
+                            {/* light theme sun image */}
+                            <FaSun className="w-8 h-8 swap-on" />
+                            {/* dark theme moon image */}
+                            <FaMoon className="w-8 h-8 swap-off" />
+                        </label>
+                    </button>
                 </div>
             </div>
         </div>
