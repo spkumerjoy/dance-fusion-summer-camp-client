@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 
 const MySelectedClasses = () => {
     const [selectedClasses] = useMySelectedClasses();
@@ -115,9 +116,16 @@ const MySelectedClasses = () => {
                                 <td>{classes.available_seats}</td>
                                 <td>${classes.price}</td>
                                 <td>
-                                    <button className="btn btn-outline btn-primary btn-sm">
-                                        Pay
-                                    </button>
+                                    <Link
+                                        to={{
+                                            pathname: "/dashboard/payment",
+                                            state: { price: classes.price },
+                                        }}
+                                    >
+                                        <button className="btn btn-outline btn-primary btn-sm">
+                                            Pay
+                                        </button>
+                                    </Link>
                                 </td>
                                 <td>
                                     <button

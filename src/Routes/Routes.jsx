@@ -17,6 +17,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import UpdateClass from "../Pages/Dashboard/Instructor/MyClasses/UpdateClass";
 import SendFeedback from "../Pages/Dashboard/Admin/ManageClasses/SendFeedback";
+import Payment from "../Pages/Dashboard/Student/Payment/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -102,6 +103,10 @@ export const router = createBrowserRouter([
             {
                 path: "my-enrolled-classes",
                 element: <MyEnrolledClasses />,
+            },
+            {
+                path: "payment",
+                element: <Payment />,
             },
             {
                 path: "payment-history",
