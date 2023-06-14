@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -100,6 +101,9 @@ const SignUp = () => {
 
     return (
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
+            <Helmet>
+                <title>Dance Fusion | SignUp</title>
+            </Helmet>
             <div className="w-full px-10 py-8 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
                 <h1 className="text-3xl my-5 font-medium text-center text-[#0F295A] uppercase">
                     <Link to="/">

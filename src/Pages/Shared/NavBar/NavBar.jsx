@@ -157,7 +157,7 @@ const NavBar = () => {
                             </button>
                         </Link>
                     )}
-                    <button className="btn btn-square btn-ghost">
+                    <button className="btn btn-square btn-ghost md:ml-5">
                         <label className="swap swap-rotate w-12 h-12">
                             <input
                                 type="checkbox"

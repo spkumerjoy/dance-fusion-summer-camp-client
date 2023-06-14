@@ -7,6 +7,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -56,6 +57,9 @@ const Login = () => {
 
     return (
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
+            <Helmet>
+                <title>Dance Fusion | Login</title>
+            </Helmet>
             <div className="w-full px-10 py-8 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
                 <h1 className="text-3xl my-5 font-medium text-center text-[#0F295A] uppercase">
                     Log in to Your Account

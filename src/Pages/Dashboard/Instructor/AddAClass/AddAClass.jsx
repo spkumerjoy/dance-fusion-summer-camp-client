@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuth from "../../../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
@@ -63,6 +64,9 @@ const AddAClass = () => {
     };
     return (
         <div className="relative flex flex-col justify-center overflow-hidden">
+            <Helmet>
+                <title>Dance Fusion | Add A Class</title>
+            </Helmet>
             <div className="w-full px-10 py-8 m-auto bg-white rounded-md shadow-xl lg:max-w-2xl">
                 <h1 className="text-3xl my-5 font-medium text-center text-[#0F295A] uppercase">
                     Add Your Class

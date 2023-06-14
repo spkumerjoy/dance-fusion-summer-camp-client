@@ -3,6 +3,7 @@ import SectionTitle from "../../../../Components/SectionTitle/SectionTitle";
 import useAuth from "../../../../Hooks/useAuth";
 import useUsers from "../../../../Hooks/useUsers";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ManageUsers = () => {
     const { user } = useAuth();
@@ -50,6 +51,9 @@ const ManageUsers = () => {
 
     return (
         <div className="px-5 mb-5">
+            <Helmet>
+                <title>Dance Fusion | Manage Users</title>
+            </Helmet>
             <SectionTitle
                 subHeading={"Ours All Users"}
                 heading={"Manage All User"}

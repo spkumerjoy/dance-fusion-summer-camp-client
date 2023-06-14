@@ -6,6 +6,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const Classes = () => {
     const [classes] = useClasses();
@@ -91,6 +92,9 @@ const Classes = () => {
 
     return (
         <div className="px-5 md:px-0">
+            <Helmet>
+                <title>Dance Fusion | Classes</title>
+            </Helmet>
             <SectionTitle
                 subHeading={"Choose your class"}
                 heading={"Our All Classes"}

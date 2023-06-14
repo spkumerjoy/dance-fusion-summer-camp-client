@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -48,6 +49,9 @@ const UpdateClass = () => {
     };
     return (
         <div className="relative flex flex-col justify-center overflow-hidden">
+            <Helmet>
+                <title>Dance Fusion | Update Class</title>
+            </Helmet>
             <div className="w-full px-10 py-8 m-auto bg-white rounded-md shadow-xl lg:max-w-2xl">
                 <h1 className="text-3xl my-5 font-medium text-center text-[#0F295A] uppercase">
                     Update Your Class

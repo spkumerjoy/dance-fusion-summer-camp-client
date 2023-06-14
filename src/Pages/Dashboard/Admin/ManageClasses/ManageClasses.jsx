@@ -3,6 +3,7 @@ import useClasses from "../../../../Hooks/useClasses";
 import SectionTitle from "../../../../Components/SectionTitle/SectionTitle";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const ManageClasses = () => {
     const [classes, refetch] = useClasses();
@@ -47,6 +48,9 @@ const ManageClasses = () => {
 
     return (
         <div className="px-5">
+            <Helmet>
+                <title>Dance Fusion | Manage Classes</title>
+            </Helmet>
             <SectionTitle
                 subHeading={"Instructor Posted Classes"}
                 heading={"Manage Classes"}

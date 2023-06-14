@@ -2,12 +2,16 @@ import React from "react";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import "./Instructors.css";
 import useUsers from "../../Hooks/useUsers";
+import { Helmet } from "react-helmet-async";
 
 const Instructors = () => {
     const [users] = useUsers();
     const instructors = users.filter((user) => user.role === "instructor");
     return (
         <div className="px-5 md:px-0">
+            <Helmet>
+                <title>Dance Fusion | Instructors</title>
+            </Helmet>
             <SectionTitle
                 subHeading={"Celebrated Dance Gurus"}
                 heading={"Ours Instructors"}

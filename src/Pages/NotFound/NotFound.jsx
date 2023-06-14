@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {
     return (
         <div className="text-center mx-auto">
+            <Helmet>
+                <title>Dance Fusion | 404</title>
+            </Helmet>
             <div>
                 <img
                     src="https://joyskyz.com/wp-content/uploads/2023/06/something-lost.png"

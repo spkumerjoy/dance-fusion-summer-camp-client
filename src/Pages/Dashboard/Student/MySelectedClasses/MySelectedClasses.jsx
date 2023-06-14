@@ -6,6 +6,7 @@ import useAuth from "../../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 const MySelectedClasses = () => {
     const [selectedClasses] = useMySelectedClasses();
@@ -62,6 +63,9 @@ const MySelectedClasses = () => {
 
     return (
         <div className="px-5">
+            <Helmet>
+                <title>Dance Fusion | My Selected Class</title>
+            </Helmet>
             <SectionTitle
                 subHeading={"Pay and buy your class"}
                 heading={"My Selected Classes"}

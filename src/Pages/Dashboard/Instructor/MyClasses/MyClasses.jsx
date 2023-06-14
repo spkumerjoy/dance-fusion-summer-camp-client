@@ -3,6 +3,7 @@ import SectionTitle from "../../../../Components/SectionTitle/SectionTitle";
 import useClasses from "../../../../Hooks/useClasses";
 import useAuth from "../../../../Hooks/useAuth";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const MyClasses = () => {
     const [classes] = useClasses();
@@ -14,6 +15,9 @@ const MyClasses = () => {
 
     return (
         <div className="px-5">
+            <Helmet>
+                <title>Dance Fusion | My Classes</title>
+            </Helmet>
             <SectionTitle
                 subHeading={"My Created Class"}
                 heading={"My All Classes"}
