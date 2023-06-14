@@ -55,13 +55,16 @@ const Classes = () => {
                 price: classItem.price,
                 enrolled_students: classItem.enrolled_students,
             };
-            fetch("http://localhost:5000/selected-classes", {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(selectedClassItem),
-            })
+            fetch(
+                "https://dance-fusion-summer-camp-server.vercel.app/selected-classes",
+                {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(selectedClassItem),
+                }
+            )
                 .then((res) => res.json())
                 .then(() => {
                     Swal.fire({

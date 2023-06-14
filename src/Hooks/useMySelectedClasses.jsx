@@ -8,7 +8,9 @@ const useMySelectedClasses = () => {
     } = useQuery({
         queryKey: ["selectedClasses"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/selected-classes");
+            const res = await fetch(
+                "https://dance-fusion-summer-camp-server.vercel.app/selected-classes"
+            );
             return res.json();
         },
     });

@@ -9,9 +9,12 @@ const ManageClasses = () => {
     const [classes, refetch] = useClasses();
 
     const handleApproved = (classes) => {
-        fetch(`http://localhost:5000/classes/approved/${classes._id}`, {
-            method: "PATCH",
-        })
+        fetch(
+            `https://dance-fusion-summer-camp-server.vercel.app/classes/approved/${classes._id}`,
+            {
+                method: "PATCH",
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data.modifiedCount) {
@@ -28,9 +31,12 @@ const ManageClasses = () => {
     };
 
     const handleDeny = (classes) => {
-        fetch(`http://localhost:5000/classes/deny/${classes._id}`, {
-            method: "PATCH",
-        })
+        fetch(
+            `https://dance-fusion-summer-camp-server.vercel.app/classes/deny/${classes._id}`,
+            {
+                method: "PATCH",
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data.modifiedCount) {

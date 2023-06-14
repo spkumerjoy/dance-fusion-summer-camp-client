@@ -12,9 +12,12 @@ const ManageUsers = () => {
     const ourUsers = users.filter((allUser) => allUser.email !== user?.email);
 
     const handleMakeAdmin = (user) => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
-            method: "PATCH",
-        })
+        fetch(
+            `https://dance-fusion-summer-camp-server.vercel.app/users/admin/${user._id}`,
+            {
+                method: "PATCH",
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data.modifiedCount) {
@@ -31,9 +34,12 @@ const ManageUsers = () => {
     };
 
     const handleMakeInstructor = (user) => {
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-            method: "PATCH",
-        })
+        fetch(
+            `https://dance-fusion-summer-camp-server.vercel.app/users/instructor/${user._id}`,
+            {
+                method: "PATCH",
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data.modifiedCount) {

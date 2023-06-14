@@ -14,13 +14,16 @@ const SendFeedback = () => {
             feedback,
         };
 
-        fetch(`http://localhost:5000/classes/feedback/${_id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updateInfo),
-        })
+        fetch(
+            `https://dance-fusion-summer-camp-server.vercel.app/classes/feedback/${_id}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(updateInfo),
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 if (data.modifiedCount > 0) {

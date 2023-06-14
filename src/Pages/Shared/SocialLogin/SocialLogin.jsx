@@ -19,7 +19,7 @@ const SocialLogin = () => {
                 email: loggedInUser.email,
                 role: "student",
             };
-            fetch("http://localhost:5000/users", {
+            fetch("https://dance-fusion-summer-camp-server.vercel.app/users", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",

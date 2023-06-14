@@ -64,13 +64,16 @@ const SignUp = () => {
                             email: data.email,
                             role: "student",
                         };
-                        fetch("http://localhost:5000/users", {
-                            method: "POST",
-                            headers: {
-                                "content-type": "application/json",
-                            },
-                            body: JSON.stringify(saveUser),
-                        })
+                        fetch(
+                            "https://dance-fusion-summer-camp-server.vercel.app/users",
+                            {
+                                method: "POST",
+                                headers: {
+                                    "content-type": "application/json",
+                                },
+                                body: JSON.stringify(saveUser),
+                            }
+                        )
                             .then((res) => res.json())
                             .then((data) => {
                                 if (data.insertedId) {

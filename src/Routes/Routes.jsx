@@ -70,7 +70,9 @@ export const router = createBrowserRouter([
                 ),
 
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/classes/${params.id}`),
+                    fetch(
+                        `https://dance-fusion-summer-camp-server.vercel.app/classes/${params.id}`
+                    ),
             },
             {
                 path: "add-a-class",
@@ -85,7 +87,9 @@ export const router = createBrowserRouter([
                 ),
 
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/classes/${params.id}`),
+                    fetch(
+                        `https://dance-fusion-summer-camp-server.vercel.app/classes/${params.id}`
+                    ),
             },
             {
                 path: "my-classes",
